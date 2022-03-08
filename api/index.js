@@ -1,5 +1,4 @@
 const express = require('express')
-const morgan = require('morgan')
 const { handleError, ErrorHandler } = require('./config/error')
 const config = require('./config/config.js')
 const { getConnection, close } = require('./config/db')
@@ -10,6 +9,7 @@ const app = express()
 app.use(express.json({ limit: '5mb' }))
 
 if (config.NODE_ENV === 'development') {
+  const morgan = require('morgan')
   app.use(morgan('tiny')) // Log HTTP requests
 }
 
