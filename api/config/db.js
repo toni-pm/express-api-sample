@@ -1,6 +1,5 @@
 const mongoose = require('mongoose')
 const { ServerApiVersion } = require('mongodb')
-const { MongoMemoryServer } = require('mongodb-memory-server')
 const config = require('./config.js')
 
 let db = null
@@ -8,6 +7,7 @@ let mongoServer = null
 
 const connect = async () => {
   if (config.NODE_ENV === 'test') {
+    const { MongoMemoryServer } = require('mongodb-memory-server')
     mongoServer = await MongoMemoryServer.create()
   }
 
