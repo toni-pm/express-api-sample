@@ -8,7 +8,7 @@ router.get('/', userController.findAll)
 router.get('/:nickname', userController.findByNickname)
 
 router.post('/',
-  // authMiddleware,
+  authMiddleware,
   validate(validateUser()),
   userController.create)
 
